@@ -2,7 +2,7 @@ xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   xml.channel do
     xml.title "Open Missouri"
-    xml.description "Connecting you to state and local government data."
+    xml.description "Find and share state and local government data."
     xml.link data_sets_url
 
     for data_set in @data_sets
