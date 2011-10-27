@@ -72,7 +72,8 @@ module RailsAdmin
       field :suggester_id do
         formatted_value do # used in form views
           if value
-            User.find(value).full_name
+            User.exists?(value) ? User.find(value).full_name : "user doesn't exist"
+            
           else
             "admin"
           end
