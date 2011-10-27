@@ -21,7 +21,7 @@
 <% end %>
 
 
-<div class="tagline">Connecting you to Missouri's state and local government data.</div>
+<div class="tagline">Find. Request. Share state and local government data.</div>
 
 <script src="/javascripts/swfobject.js" type="text/javascript"></script>
 <div id="flashcontent"></div>
@@ -35,7 +35,9 @@
 	<div id="data_sets" class="data_list">
 		<% @data_sets.each do |data_set| %>
 			<div class="data_item">
-				<h3><%= link_to data_set.name, data_set_path(data_set) %></h3>
+				<h3><%= link_to data_set.name, data_set_path(data_set) %><% if data_set.samplefile? %>
+				<span style="float: right;"><%= link_to "Download sample data", data_set.samplefile.url, {:class => "small orange awesome"} %></span>
+				<% end%></h3>
 				<div class="organization"><% unless data_set.organization.blank? %><%= link_to data_set.organization.name, organization_path(data_set.organization) %><% end %></div>
 				<div class="categories"><%= data_set.categories.collect{|category| category.name}.join(", ") %></div>
 			</div>

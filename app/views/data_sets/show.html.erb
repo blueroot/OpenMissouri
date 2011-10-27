@@ -1,27 +1,16 @@
 <% content_for :sidebar do %>
 
 	<div id="sidebar">
-		<div id="sidebar_content">
-			<% if user_signed_in? %>
+		<div id="sidebar_content">		
+		
+			<p class="clearfix"><%= link_to image_tag("/images/buttons/sunshine_this.png"), sunshine_path(@data_set)%></p>
 			
-				<p class="clearfix"><%= link_to image_tag("/images/buttons/sunshine_this.png"), sunshine_path(@data_set)%></p>
-			
-				<% if  current_user.admin? %>
-					<p class="clearfix"><%= link_to 'Edit this data set', edit_data_set_path(@data_set), :class => 'button' %></p>
-				<% end %>
-
-			<% else %>
-				<div id="loginbox" style="display:none; width: 500px;height: 300px;">
-					<h2>Please login first</h2>
-					<p>In order to customize the Sunshine This letter, we need to you to <%= link_to "sign up", new_user_registration_path %> or <%= link_to "login", new_user_session_path %> to OpenMissouri.</p>		
-				</div>
-				<p style="margin-bottom: 15px; display: block;" class="clearfix"><a href="#loginbox" rel="facebox"><%= image_tag("/images/buttons/sunshine_this.png")%></a></p>
+			<% if user_signed_in? and current_user.admin? %>
+				<p class="clearfix"><%= link_to 'Edit this data set', edit_data_set_path(@data_set), :class => 'button' %></p>
 			<% end %>
 
-			<div class="sidebar_section" class="clearfix">
-	
+			<div class="sidebar_section" class="clearfix">	
 				<h3>Share this Data Set</h3>
-				
 				<div class="social_menu">
 					<!-- AddThis Button BEGIN -->
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">

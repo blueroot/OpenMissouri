@@ -112,7 +112,9 @@
 		<div id="data_sets" class="data_list">
 		<% @data_sets.each do |data_set| %>
 			<div class="data_item">
-				<h3><%= link_to data_set.name, data_set %></h3>
+				<h3><%= link_to data_set.name, data_set %><% if data_set.samplefile? %>
+				<span style="float: right;"><%= link_to "Download sample data", data_set.samplefile.url, {:class => "small orange awesome"} %></span>
+				<% end%></h3>
 				<div class="categories"><%= data_set.categories.collect{|category| category.name}.join(", ") %></div>
 				<div class="snippet"><% unless data_set.description.blank?  %>
 		      <%= first_x_words(strip_tags(data_set.description),30,'...') %>
