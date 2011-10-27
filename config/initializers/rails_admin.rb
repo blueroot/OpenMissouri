@@ -68,6 +68,20 @@ module RailsAdmin
       sort_by :name
       sort_reverse false 
       
+      field :name
+      field :suggester_id do
+        formatted_value do # used in form views
+          if value
+            User.find(value).full_name
+          else
+            "admin"
+          end
+        end
+      
+      end
+      field :created_at
+      
+      
       #field :samplefile_file_name do
       #  formatted_value do
       #    bindings[:view].tag(:link, { :href => bindings[:object].samplefile.url }) << value
@@ -78,7 +92,7 @@ module RailsAdmin
     
     show do
       
-      exclude_fields :interest, :suggester
+      exclude_fields :interest
     end
     edit do
       group :comments do
