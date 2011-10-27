@@ -68,6 +68,7 @@ module RailsAdmin
       sort_by :name
       sort_reverse false 
       
+      field :id
       field :name
       field :suggester_id do
         formatted_value do # used in form views

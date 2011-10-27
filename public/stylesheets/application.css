@@ -46,7 +46,11 @@ h3{ margin: 0 0 10px 0; padding: 0 0 0 0 ;}
 
 #content p{margin: 0 0 10px 0; line-height: 20px;}
 #sidebar p{margin: 0 0 15px 0; line-height: 16px;}
-#content .tagline{ margin: 0 0 15px 0;  font-family: 'Ubuntu', sans-serif; font-size: 30px; color: #3f6f94; font-weight:bold; text-transform:uppercase; line-height:36px; text-shadow: 1px 1px #666;}
+#content .tagline{ margin: 0 0 15px 0;  font-family: 'Ubuntu', sans-serif; font-size: 28px; color: #404040; font-weight:bold; text-transform:uppercase; line-height:36px; text-shadow: 0px 0px #666;}
+#content .tagline span{font-size: 48px}
+#content .tagline span.one{color: #777;}
+#content .tagline span.two{color: #444;}
+#content .tagline span.three{color: #222;}
 #flashcontent{margin-bottom: 10px;}
 
 .data_list{ border-top: 3px solid #404040; padding-top: 15px;}
