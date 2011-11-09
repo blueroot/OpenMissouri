@@ -7,14 +7,13 @@ class DataSet < ActiveRecord::Base
   belongs_to :suggester, :class_name => "User", :foreign_key => "suggester_id"
   acts_as_commentable
 
-  attr_accessible :samplefile, :samplefile_file_name, :samplefile_content_type, :name, :organization_id, :category_ids, :description, :data_format, :cost, :period_start_date, :period_end_date, :update_frequency, :documentation_url, :tag_list, :notes, :status
+  attr_accessible :samplefile, :samplefile_file_name, :samplefile_content_type, :name, :organization_id, :category_ids, :description, :data_format, :cost, :period_start_date, :period_end_date, :update_frequency, :documentation_url, :tag_list, :notes, :status, :interest, :suggester_id
   validates :name, :presence => true
   
   cattr_reader :per_page
   @@per_page = 20
   
-  has_attached_file :samplefile
-  
+  has_attached_file :samplefile  
   
   before_post_process :is_image?
 
@@ -24,14 +23,6 @@ class DataSet < ActiveRecord::Base
   
   acts_as_taggable
   acts_as_taggable_on :tags
-  
-  
-  #searchable do
-  #  text    :description
-  #  string  :name
-  #  string  :data_format
-  #  time    :created_at
-  #end
   
   def to_param
 		"#{id}-#{name.gsub(/[^a-z0-9]+/i, '-').downcase}"
