@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   has_many :sunshine_requests
   
   
+  def name 
+    "#{self[:first_name]} #{self[:last_name]}"
+  end
+  
   def full_name_with_email
     "#{self[:full_name]} (#{email})"
   end
