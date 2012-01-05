@@ -1,5 +1,38 @@
 module RailsAdmin
   
+  class AbstractHistory
+      # disable rails_admin's history tracking
+      def self.create_history_item(message, object, abstract_model, user) ; end
+
+      # Fetch the history items for a model.  Returns an array containing
+      # the page count and an AR query result containing the history
+      # items.
+      def self.history_for_model(model, query, sort, sort_reverse, all, page = 1, per_page = RailsAdmin::Config::Sections::List.default_items_per_page || 20)
+        []
+      end
+
+      def self.history_for_object(model, object, query, sort, sort_reverse)
+        []
+      end
+
+      # Fetch the history item counts for one month.
+      def self.history_for_month(month, year)
+        []
+      end
+
+      # Fetch the history item counts between the dates provided.
+      def self.history_summaries(from, to)
+        []
+      end
+
+      # Fetch the most recent history item for a model.
+      def self.most_recent_history(name)
+        nil
+      end
+
+    end
+  
+  
   RailsAdmin.config do |config|
     #config.main_app_name = ["OpenMissouri"]
     config.excluded_models << "UserIdentity"
